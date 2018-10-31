@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class ProfileController {
-
     @RequestMapping("/profile")
     public String displayProfile(ProfileForm profileForm){
         return "profile/profilePage";
