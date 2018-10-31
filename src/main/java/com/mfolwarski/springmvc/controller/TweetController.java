@@ -10,14 +10,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 public class TweetController {
+    private final Twitter twitter;
+
     @Autowired
-    private Twitter twitter;
+    public TweetController(Twitter twitter) {
+        this.twitter = twitter;
+    }
 
     @RequestMapping("/")
+    public String home(){
+        return "searchPage";
+    }
+
+     @RequestMapping(value = "/result")
     public String hello(@RequestParam(defaultValue = "SpringMVC") String search, Model model){
         SearchResults searchResults = twitter.searchOperations().search(search);
         List<Tweet> tweets = searchResults.getTweets();
