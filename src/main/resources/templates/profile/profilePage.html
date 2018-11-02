@@ -26,7 +26,7 @@
         <div class="row">
             <div class="input-field col s6">
                 <input th:field="${profileForm.birthDate}" th:placeholder="${dateFormat}"
-                       th:errorclass="invalid" id="birthDate" type="text" class="datepicker-done">
+                       th:errorclass="invalid" id="birthDate" type="text" class="datepicker">
                 <label for="birthDate">Birth Date</label>
                 <div th:errors="*{birthDate}" class="red-text">Error</div>
             </div>
@@ -38,5 +38,13 @@
         </div>
     </form>
 </div>
+<th:block layout:fragment="script">
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.datepicker');
+        var instances = M.Datepicker.init(elems, {format: '[[${dateFormat}]]'});
+    });
+</script>
+</th:block>
 </body>
 </html>

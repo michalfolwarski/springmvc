@@ -15,7 +15,7 @@ public class ProfileController {
 
     @ModelAttribute("dateFormat")
     public String localeFormat(Locale locale){
-        return LocalDateFormatter.getPattern(locale).toUpperCase();
+        return LocalDateFormatter.getPattern(locale).toLowerCase();
     }
 
     @RequestMapping("/profile")
