@@ -11,12 +11,14 @@
     <form th:action="@{/profile}" method="post" th:object="${profileForm}" class="col m8 s12 offset-m2">
         <div class="row">
             <div class="input-field col s6">
+                <i class="small material-icons prefix">person</i>
                 <input th:field="${profileForm.twitterHandle}" id="twitterHandle"
                        th:errorclass="invalid" type="text" />
                 <label for="twitterHandle" th:text="#{profilePage.twitterHandle}">Username</label>
                 <div th:errors="*{twitterHandle}" class="red-text">Error</div>
             </div>
             <div class="input-field col s6">
+                <i class="small material-icons prefix">email</i>
                 <input th:field="${profileForm.email}"  id="email"
                        th:errorclass="invalid" type="text">
                 <label for="email" th:text="#{profilePage.email}">Email</label>
@@ -25,6 +27,7 @@
         </div>
         <div class="row">
             <div class="input-field col s6">
+                <i class="small material-icons prefix">date_ranged</i>
                 <input th:field="${profileForm.birthDate}" th:placeholder="${dateFormat}"
                        th:errorclass="invalid" id="birthDate" type="text" class="datepicker">
                 <label for="birthDate" th:text="#{profilePage.birthDate}">Birth Date</label>
@@ -32,7 +35,9 @@
             </div>
         </div>
         <div class="row">
+            <i class="small material-icons left">star</i>
             <fieldset>
+                <legend th:text="#{profilePage.tastesLegend}">What do you like?</legend>
                 <div th:errors="*{tastes}" class="red-text">Error</div>
                 <div class="row" th:each="row, rowStat : *{tastes}">
                     <div class="col s6">
@@ -46,7 +51,6 @@
                         </button>
                     </div>
                 </div>
-                <legend th:text="#{profilePage.tastesLegend}">What do you like?</legend>
                 <button class="btn teal" type="submit" name="addField">
                     <span th:text="#{profilePage.addField}">Add Field</span>
                     <i class="medium material-icons left">playlist_add</i>
