@@ -31,10 +31,32 @@
                 <div th:errors="*{birthDate}" class="red-text">Error</div>
             </div>
         </div>
+        <div class="row">
+            <fieldset>
+                <div th:errors="*{tastes}" class="red-text">Error</div>
+                <div class="row" th:each="row, rowStat : *{tastes}">
+                    <div class="col s6">
+                        <input type="text" th:field="*{tastes[__${rowStat.index}__]}" th:placeholder="#{profilePage.tastePlaceholder}" />
+                    </div>
+                    <div class="col s6">
+                        <button class="btn red" type="submit" name="removeTaste"
+                                th:value="${rowStat.index}">
+                            <span th:text="#{profilePage.removeTaste}">Remove</span>
+                            <i class="medium material-icons right waves-effect">delete</i>
+                        </button>
+                    </div>
+                </div>
+                <legend th:text="#{profilePage.tastesLegend}">What do you like?</legend>
+                <button class="btn teal" type="submit" name="addField">
+                    <span th:text="#{profilePage.addField}">Add Field</span>
+                    <i class="medium material-icons left">playlist_add</i>
+                </button>
+            </fieldset>
+        </div>
         <div class="row s12">
             <button class="btn indigo waves-effect waves-light" type="submit" name="save">
                 <span th:text="#{profilePage.submit}">Submit</span>
-                <i class="medium material-icons right">send</i>
+                <i class="medium material-icons right">save</i>
             </button>
         </div>
     </form>
